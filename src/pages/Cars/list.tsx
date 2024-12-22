@@ -10,26 +10,16 @@ import {
 import { type BaseRecord, useMany } from "@refinedev/core";
 import { Space, Table } from "antd";
 
-export const BlogPostList = () => {
+export const CarsList = () => {
   const { tableProps } = useTable({
     syncWithLocation: true,
   });
 
-  const { data: categoryData, isLoading: categoryIsLoading } = useMany({
-    resource: "categories",
-    ids:
-      tableProps?.dataSource
-        ?.map((item) => item?.category?.id)
-        .filter(Boolean) ?? [],
-    queryOptions: {
-      enabled: !!tableProps?.dataSource,
-    },
-  });
-
   return (
     <List>
-      <Table {...tableProps} rowKey="id">
-        <Table.Column dataIndex="id" title={"ID"} />
+      <Table {...tableProps} rowKey="name">
+        <Table.Column dataIndex="name" title={"Name"} />
+        {/*
         <Table.Column dataIndex="title" title={"Title"} />
         <Table.Column
           dataIndex="content"
@@ -67,6 +57,7 @@ export const BlogPostList = () => {
             </Space>
           )}
         />
+        */}
       </Table>
     </List>
   );

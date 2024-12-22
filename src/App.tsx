@@ -1,6 +1,7 @@
 import { GitHubBanner, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import jsonServerDataProvider from '@refinedev/simple-rest';
 
 import {
   ErrorComponent,
@@ -21,11 +22,11 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-  BlogPostCreate,
+  CarCreate,
   BlogPostEdit,
-  BlogPostList,
   BlogPostShow,
-} from "./pages/blog-posts";
+  CarsList,
+} from "./pages/Cars";
 import {
   CategoryCreate,
   CategoryEdit,
@@ -34,6 +35,8 @@ import {
 } from "./pages/categories";
 
 function App() {
+  const API_URL = 'https://localhost:7005';
+  const dataProvider = jsonServerDataProvider(API_URL);
   return (
     <BrowserRouter>
       <GitHubBanner />
@@ -44,25 +47,13 @@ function App() {
               <Refine
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
-                dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+                dataProvider={dataProvider}
                 resources={[
                   {
-                    name: "blog_posts",
-                    list: "/blog-posts",
-                    create: "/blog-posts/create",
-                    edit: "/blog-posts/edit/:id",
-                    show: "/blog-posts/show/:id",
-                    meta: {
-                      canDelete: true,
-                    },
-                  },
-                  {
-                    name: "categories",
-                    list: "/categories",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
-                    meta: {
+                    name: "cars",
+                    list: "/cars/",
+                    create: "/cars/create",
+                    meta:{
                       canDelete: true,
                     },
                   },
@@ -87,11 +78,11 @@ function App() {
                   >
                     <Route
                       index
-                      element={<NavigateToResource resource="blog_posts" />}
+                      element={<NavigateToResource resource="cars" />}
                     />
-                    <Route path="/blog-posts">
-                      <Route index element={<BlogPostList />} />
-                      <Route path="create" element={<BlogPostCreate />} />
+                    <Route path="/cars">
+                      <Route index element={<CarsList />} />
+                      <Route path="create" element={<CarCreate />} />
                       <Route path="edit/:id" element={<BlogPostEdit />} />
                       <Route path="show/:id" element={<BlogPostShow />} />
                     </Route>
