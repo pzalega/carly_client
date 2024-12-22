@@ -17,7 +17,7 @@ export const CarsList = () => {
 
   return (
     <List>
-      <Table {...tableProps} rowKey="name">
+      <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="name" title={"Name"} />
         {/*
         <Table.Column dataIndex="title" title={"Title"} />
@@ -46,6 +46,7 @@ export const CarsList = () => {
           title={"Created at"}
           render={(value: any) => <DateField value={value} />}
         />
+        */}
         <Table.Column
           title={"Actions"}
           dataIndex="actions"
@@ -57,7 +58,6 @@ export const CarsList = () => {
             </Space>
           )}
         />
-        */}
       </Table>
     </List>
   );

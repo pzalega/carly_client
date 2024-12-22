@@ -23,8 +23,8 @@ import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
   CarCreate,
-  BlogPostEdit,
-  BlogPostShow,
+  CarEdit,
+  CarShow,
   CarsList,
 } from "./pages/Cars";
 import {
@@ -53,6 +53,8 @@ function App() {
                     name: "cars",
                     list: "/cars/",
                     create: "/cars/create",
+                    show: "/cars/show/:id",
+                    edit: "/cars/edit/:id",
                     meta:{
                       canDelete: true,
                     },
@@ -83,8 +85,8 @@ function App() {
                     <Route path="/cars">
                       <Route index element={<CarsList />} />
                       <Route path="create" element={<CarCreate />} />
-                      <Route path="edit/:id" element={<BlogPostEdit />} />
-                      <Route path="show/:id" element={<BlogPostShow />} />
+                      <Route path="edit/:id" element={<CarEdit />} />
+                      <Route path="show/:id" element={<CarShow />} />
                     </Route>
                     <Route path="/categories">
                       <Route index element={<CategoryList />} />
