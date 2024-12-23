@@ -18,9 +18,9 @@ export const CarsList = () => {
   return (
     <List>
       <Table {...tableProps} rowKey="id">
-        <Table.Column dataIndex="name" title={"Name"} />
+        <Table.Column dataIndex="name" title={"Nazwa"} />
+        <Table.Column dataIndex="createdAt" title={"Dodano"} />
         {/*
-        <Table.Column dataIndex="title" title={"Title"} />
         <Table.Column
           dataIndex="content"
           title={"Content"}

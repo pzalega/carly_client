@@ -39,7 +39,6 @@ function App() {
   const dataProvider = jsonServerDataProvider(API_URL);
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>

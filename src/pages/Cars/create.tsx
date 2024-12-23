@@ -15,7 +15,7 @@ export const CarCreate = () => {
     <Create saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical">
         <Form.Item
-          label={"Name"}
+          label={"Nazwa"}
           name={["name"]}
           rules={[
             {
