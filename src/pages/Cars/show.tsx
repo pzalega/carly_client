@@ -1,6 +1,7 @@
-import { DateField, MarkdownField, Show, TextField } from "@refinedev/antd";
-import { useOne, useShow } from "@refinedev/core";
-import { Typography } from "antd";
+import { TableOutlined } from "@ant-design/icons";
+import { Create, CreateButton, Show, TextField } from "@refinedev/antd";
+import { useShow } from "@refinedev/core";
+import { Typography, Descriptions, Button } from "antd";
 
 const { Title } = Typography;
 
@@ -11,9 +12,18 @@ export const CarShow = () => {
   const record = data?.data;
 
   return (
-    <Show isLoading={isLoading}>
-      <Title level={5}>{"Name"}</Title>
-      <TextField value={record?.name} />
+    <Show 
+    isLoading={isLoading} 
+    title={record?.name} 
+    headerButtons={({defaultButtons})=>(
+      <>
+      {defaultButtons}
+      <CreateButton resource="refuelings" meta={{"id": record?.id}}>Dodaj tankowanie</CreateButton>
+      </>
+    )}>
+      <Descriptions >
+        <Descriptions.Item label="Nazwa">{record?.name}</Descriptions.Item>
+      </Descriptions>
     </Show>
   );
 };

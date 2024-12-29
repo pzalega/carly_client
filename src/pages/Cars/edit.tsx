@@ -1,19 +1,8 @@
-import { Edit, useForm, useSelect } from "@refinedev/antd";
-import MDEditor from "@uiw/react-md-editor";
-import { Form, Input, Select } from "antd";
+import { Edit, useForm } from "@refinedev/antd";
+import { Form, Input } from "antd";
 
 export const CarEdit = () => {
-  const { formProps, saveButtonProps, queryResult, formLoading } = useForm({});
-
-  const carData = queryResult?.data?.data;
-
-  const { selectProps: categorySelectProps } = useSelect({
-    resource: "cars",
-    defaultValue: carData?.category,
-    queryOptions: {
-      enabled: !!carData?.category,
-    },
-  });
+  const { formProps, saveButtonProps, formLoading } = useForm({});
 
   return (
     <Edit saveButtonProps={saveButtonProps} isLoading={formLoading}>

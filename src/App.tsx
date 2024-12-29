@@ -33,6 +33,8 @@ import {
   CategoryList,
   CategoryShow,
 } from "./pages/categories";
+import { FillUpCreate } from "./pages/FillUps/create";
+import { FillUpList } from "./pages/FillUps/list";
 
 function App() {
   const API_URL = 'https://localhost:7005';
@@ -42,22 +44,30 @@ function App() {
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>
-            <DevtoolsProvider>
               <Refine
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
                 dataProvider={dataProvider}
                 resources={[
                   {
-                    name: "cars",
-                    list: "/cars/",
-                    create: "/cars/create",
-                    show: "/cars/show/:id",
-                    edit: "/cars/edit/:id",
+                    name: "vehicles",
+                    list: "/vehicles/",
+                    create: "/vehicles/create",
+                    show: "/vehicles/:id/show",
+                    edit: "/vehicles/:id/edit",
+                    meta:{
+                      canDelete: true,
+                    }},
+                    {
+                    name: "refuelings",
+                    list: "/refuelings/",
+                    create: "/refuelings/create/:id",
+                    show: "/refueling/:id/show",
+                    edit: "/refueling/:id/edit",
                     meta:{
                       canDelete: true,
                     },
-                  },
+                    },
                 ]}
                 options={{
                   syncWithLocation: true,
@@ -79,19 +89,17 @@ function App() {
                   >
                     <Route
                       index
-                      element={<NavigateToResource resource="cars" />}
+                      element={<NavigateToResource resource="vehicles" />}
                     />
-                    <Route path="/cars">
+                    <Route path="/vehicles">
                       <Route index element={<CarsList />} />
                       <Route path="create" element={<CarCreate />} />
-                      <Route path="edit/:id" element={<CarEdit />} />
-                      <Route path="show/:id" element={<CarShow />} />
+                      <Route path=":id/edit" element={<CarEdit />} />
+                      <Route path=":id/show" element={<CarShow />} />
                     </Route>
-                    <Route path="/categories">
-                      <Route index element={<CategoryList />} />
-                      <Route path="create" element={<CategoryCreate />} />
-                      <Route path="edit/:id" element={<CategoryEdit />} />
-                      <Route path="show/:id" element={<CategoryShow />} />
+                    <Route path="/refuelings">
+                      <Route index element={<FillUpList />} />
+                      <Route path="create/:id" element={<FillUpCreate />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
@@ -101,8 +109,6 @@ function App() {
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
               </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
           </AntdApp>
         </ColorModeContextProvider>
       </RefineKbarProvider>
