@@ -1,9 +1,6 @@
-import { TableOutlined } from "@ant-design/icons";
-import { Create, CreateButton, Show, TextField } from "@refinedev/antd";
+import { CreateButton, Show  } from "@refinedev/antd";
 import { useShow } from "@refinedev/core";
-import { Typography, Descriptions, Button } from "antd";
-
-const { Title } = Typography;
+import { Descriptions } from "antd";
 
 export const CarShow = () => {
   const { queryResult } = useShow({});

@@ -1,8 +1,7 @@
 import { Create, useForm, useSelect } from "@refinedev/antd";
-import { useParsed, useResource, useShow } from "@refinedev/core";
-import { DatePicker, Form, Input, InputNumber, Select } from "antd";
+import { useParsed  } from "@refinedev/core";
+import { DatePicker, Form, InputNumber, Select } from "antd";
 import dayjs from "dayjs";
-import { useParams } from "react-router";
 
 export const FillUpCreate = () => {
   const {params} = useParsed();
@@ -13,7 +12,7 @@ export const FillUpCreate = () => {
     resource: "vehicles",
     optionLabel: "name",
     optionValue: "id",
-    defaultValue: vehicleId,
+    defaultValue: vehicleId
   });
 
   const { formProps, saveButtonProps } = useForm({
@@ -21,10 +20,11 @@ export const FillUpCreate = () => {
     action: "create"
   });
 
+
   return (
     <Create saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical"
-      initialValues={{["fillUpDate"]: dayjs()}}>
+      initialValues={{["fillUpDate"]: dayjs(), ["vehicleId"]: vehicleId}}>
         <Form.Item
           label={"Pojazd"}
           name={["vehicleId"]}

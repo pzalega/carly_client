@@ -1,5 +1,3 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import jsonServerDataProvider from '@refinedev/simple-rest';
 
@@ -16,7 +14,6 @@ import routerBindings, {
   NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router";
-import dataProvider from "@refinedev/simple-rest";
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import { Header } from "./components/header";
@@ -27,14 +24,9 @@ import {
   CarShow,
   CarsList,
 } from "./pages/Cars";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
 import { FillUpCreate } from "./pages/FillUps/create";
 import { FillUpList } from "./pages/FillUps/list";
+import { Refine } from "@refinedev/core";
 
 function App() {
   const API_URL = 'https://localhost:7005';

@@ -20,33 +20,6 @@ export const CarsList = () => {
         <Table.Column dataIndex="name" title={"Nazwa"} />
         <Table.Column dataIndex="fuelType" title={"Paliwo"} />
         <Table.Column dataIndex="createdAt" title={"Dodano"} />
-        {/*
-        <Table.Column
-          dataIndex="content"
-          title={"Content"}
-          render={(value: any) => {
-            if (!value) return "-";
-            return <MarkdownField value={value.slice(0, 80) + "..."} />;
-          }}
-        />
-        <Table.Column
-          dataIndex={"category"}
-          title={"Category"}
-          render={(value) =>
-            categoryIsLoading ? (
-              <>Loading...</>
-            ) : (
-              categoryData?.data?.find((item) => item.id === value?.id)?.title
-            )
-          }
-        />
-        <Table.Column dataIndex="status" title={"Status"} />
-        <Table.Column
-          dataIndex={["createdAt"]}
-          title={"Created at"}
-          render={(value: any) => <DateField value={value} />}
-        />
-        */}
         <Table.Column
           title={"Actions"}
           dataIndex="actions"
