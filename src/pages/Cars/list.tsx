@@ -23,7 +23,7 @@ export const CarsList = () => {
         <Table.Column dataIndex="createdAt" title={"Dodano"}
         render={(value) => <DateField value={value} /> }/>
         <Table.Column
-          title={"Actions"}
+          title={"Akcje"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

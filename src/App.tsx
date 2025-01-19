@@ -42,6 +42,13 @@ function App() {
                 dataProvider={dataProvider}
                 resources={[
                   {
+                    name: "fuelTypes",
+                    list: "/fuelTypes/",
+                    meta: {
+                            hide: true,
+                          },
+                  },
+                  {
                     name: "vehicles",
                     list: "/vehicles/",
                     create: "/vehicles/create",
