@@ -1,5 +1,6 @@
 import {
   CreateButton,
+  DateField,
   DeleteButton,
   EditButton,
   List,
@@ -19,7 +20,8 @@ export const CarsList = () => {
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="name" title={"Nazwa"} />
         <Table.Column dataIndex="fuelType" title={"Paliwo"} />
-        <Table.Column dataIndex="createdAt" title={"Dodano"} />
+        <Table.Column dataIndex="createdAt" title={"Dodano"}
+        render={(value) => <DateField value={value} /> }/>
         <Table.Column
           title={"Actions"}
           dataIndex="actions"
